@@ -97,3 +97,34 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+
+# === OS-Specific Files ===
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.stackdump
+
+# Linux
+*~
+.nfs*
+
+# Common editor/backup files
+*.bak
+*.tmp
+*.old
+*.swp
+*.swo
+*.swn
+
