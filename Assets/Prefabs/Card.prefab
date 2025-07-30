@@ -292,3 +292,8 @@ MonoBehaviour:
   selected: 0
   canMove: 0
   canClick: 0
+  images: []
+  perks: []
+  currentPerks: 
+  points: 0
+  sprite: {fileID: 623508720164719692}

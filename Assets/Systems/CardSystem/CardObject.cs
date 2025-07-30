@@ -19,6 +19,8 @@ public class CardObject : MonoBehaviour
     public bool canMove;
     public bool canClick;
     public List<Texture2D> images;
+    public List<Texture2D> perks;
+    public List<int> currentPerks; // 1 is green, 2 is red, 3 is orange, 4 is rainbow
     public int points;
     public RawImage sprite;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
