@@ -39,7 +39,7 @@ public class CardInteraction : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<CardPlacement>())
             {
-                hit.collider.gameObject.GetComponent<CardPlacement>().currentCard = hit.collider.gameObject;
+                hit.collider.gameObject.GetComponent<CardPlacement>().currentCard = currentSelected;
                 currentSelected.GetComponent<CardObject>().placeDown(hit.collider.gameObject);
                 currentSelected.GetComponent<CardObject>().placed = true;
                 currentSelected.GetComponent<CardObject>().cardSlot = hit.collider.gameObject;
