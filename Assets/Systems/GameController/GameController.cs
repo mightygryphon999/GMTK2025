@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +7,31 @@ public class GameController : MonoBehaviour
     public List<CardPlacement> cards;
     public float points;
     public List<CardPlacement> hand;
-    public void setupCards()
+    public GameObject cardPrefab;
+    public Vector3 startingPos;
+    public Quaternion startingRot;
+    public float cardSpawnRate;
+
+    [ContextMenu("Start Game")]
+    public void startGame()
     {
-        // cards setup
+        StartCoroutine(setupCards());
+    }
+
+    IEnumerator setupCards()
+    {
+        foreach (CardPlacement card in cards)
+        {
+            GameObject newCard = Instantiate(cardPrefab, startingPos, startingRot);
+            card.currentCard = newCard;
+            newCard.GetComponent<CardObject>().placeDown(card.gameObject);
+            newCard.GetComponent<CardObject>().placed = true;
+            newCard.GetComponent<CardObject>().selected = false;
+            newCard.GetComponent<CardObject>().cardSlot = card.gameObject;
+            newCard.GetComponent<CardObject>().canMove = true;
+            newCard = null;
+            yield return new WaitForSeconds(cardSpawnRate);
+        }
     }
 
     public void countPoints()
