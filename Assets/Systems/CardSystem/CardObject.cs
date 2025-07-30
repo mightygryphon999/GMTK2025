@@ -51,6 +51,7 @@ public class CardObject : MonoBehaviour
     {
         selected = false;
         canClick = false;
+        gameObject.transform.SetParent(target.transform);
         transform.DOMove(new Vector3(target.transform.position.x, target.transform.position.y + floatAmount, target.transform.position.z), transferSpeed).SetEase(Ease.OutSine).OnComplete(() => {hovering = false; canClick = true; });
         transform.DORotate(new Vector3(-90, target.transform.eulerAngles.y, 0), transferSpeed).SetEase(Ease.OutSine);
     }
