@@ -39,11 +39,16 @@ public class CardInteraction : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<CardPlacement>())
             {
-                hit.collider.gameObject.GetComponent<CardPlacement>().currentCard = currentSelected;
-                currentSelected.GetComponent<CardObject>().placeDown(hit.collider.gameObject);
-                currentSelected.GetComponent<CardObject>().placed = true;
-                currentSelected.GetComponent<CardObject>().cardSlot = hit.collider.gameObject;
-                currentSelected = null;
+                if (currentSelected.GetComponent<CardObject>().canMove)
+                {
+                    hit.collider.gameObject.GetComponent<CardPlacement>().currentCard = currentSelected;
+                    currentSelected.GetComponent<CardObject>().placeDown(hit.collider.gameObject);
+                    currentSelected.GetComponent<CardObject>().placed = true;
+                    currentSelected.GetComponent<CardObject>().selected = false;
+                    currentSelected.GetComponent<CardObject>().cardSlot = hit.collider.gameObject;
+                    currentSelected.GetComponent<CardObject>().canMove = true;
+                    currentSelected = null;
+                }
             }
         }
     }
@@ -57,10 +62,14 @@ public class CardInteraction : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<CardObject>())
             {
-                hit.collider.gameObject.GetComponent<CardObject>().interact();
-                currentSelected = hit.collider.gameObject;
-                currentSelected.GetComponent<CardObject>().placed = false;
-                currentSelected.GetComponent<CardObject>().cardSlot = null;
+                if (!hit.collider.gameObject.GetComponent<CardObject>().selected && hit.collider.gameObject.GetComponent<CardObject>().canClick)
+                {
+                    hit.collider.gameObject.GetComponent<CardObject>().interact();
+                    currentSelected = hit.collider.gameObject;
+                    currentSelected.GetComponent<CardObject>().placed = false;
+                    currentSelected.GetComponent<CardObject>().selected = true;
+                    currentSelected.GetComponent<CardObject>().cardSlot = null;
+                }
             }
         }
     }
