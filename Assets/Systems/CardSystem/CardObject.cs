@@ -1,6 +1,9 @@
 using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting;
+using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine.UI;
 
 public class CardObject : MonoBehaviour
 {
@@ -15,11 +18,15 @@ public class CardObject : MonoBehaviour
     private float hover;
     public bool canMove;
     public bool canClick;
+    public List<Texture2D> images;
+    public int points;
+    public RawImage sprite;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         hover = transform.position.y + raiseAmount;
         canClick = true;
+        sprite.texture = images[points];
     }
 
     public void interact()
