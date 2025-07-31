@@ -24,7 +24,7 @@ public class PerkBuyer : MonoBehaviour
         {
             gain.GetComponent<PerkBuyer>().delete();
         }
-        pc.currentPerks.Add(type);
+        pc.currentPerks.Add(type+1);
         delete();
     }
 

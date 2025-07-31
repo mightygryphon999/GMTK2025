@@ -28,7 +28,7 @@ public class PerksController : MonoBehaviour
         {
             GameObject perkGameobject = Instantiate(perkImagePrefab);
             perkGameobject.transform.SetParent(perkGroup.transform);
-            perkGameobject.GetComponent<UnityEngine.UI.Image>().sprite = perkImages[perk];
+            perkGameobject.GetComponent<UnityEngine.UI.Image>().sprite = perkImages[perk-1];
         }
     }
     public IEnumerator pointAdditions()
@@ -92,6 +92,7 @@ public class PerksController : MonoBehaviour
     }
     public void multiplePoints(int type, int multiply, bool wantType)
     {
+        Debug.Log("Multiply");
         int typeCount = 0;
         for (int i = 0; i < gc.hand.Count; i++)
         {
@@ -102,28 +103,29 @@ public class PerksController : MonoBehaviour
                     string[] list = gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks[x].Split(':');
                     foreach (string perk in list)
                     {
-                        if (wantType)
-                        {
-                            if (perk == type.ToString() || perk == "4")
+                        // if (wantType)
+                        // {
+                            if (perk == type.ToString() || perk == "4" && wantType)
                             {
                                 typeCount++;
                             }
-                        }
-                        else
-                        {
-                            if (perk != type.ToString() || perk == "4")
-                            {
-                                typeCount++;
-                            }
-                        }
+                        // }
+                        // else
+                        // {
+                        //     if (perk != type.ToString())
+                        //     {
+                        //         typeCount++;
+                        //     }
+                        // }
                     }
                 }
             }
         }
-        gc.points = gc.points * (typeCount * multiply);
+        gc.points *= Mathf.Max(1, typeCount * multiply);
     }
     public void addPoints(int type, int addition)
     {
+        Debug.Log("Add");
         int typeCount = 0;
         for (int i = 0; i < gc.hand.Count; i++)
         {

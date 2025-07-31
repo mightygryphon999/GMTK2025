@@ -98,8 +98,8 @@ public class GameController : MonoBehaviour
                 i += neighboringCards - 1;
             }
         }
-        totalPoints += points;
         yield return StartCoroutine(pc.pointAdditions());
+        totalPoints += points;
         currentPointCounter.text = "Points: " + points.ToString();
         playing = false;
         pc.Setup();
