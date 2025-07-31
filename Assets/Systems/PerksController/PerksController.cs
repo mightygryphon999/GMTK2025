@@ -14,6 +14,10 @@ public class PerksController : MonoBehaviour
     public List<Sprite> perkImages;
     public GameObject perkGroup;
     public GameObject perkImagePrefab;
+    void Start()
+    {
+        Setup();
+    }
     public void Setup()
     {
         foreach (int perk in currentPerks)

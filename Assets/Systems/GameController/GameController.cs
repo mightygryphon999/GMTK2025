@@ -72,6 +72,10 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(cardSpawnRate);
         }
     }
+    public void done()
+    {
+        StartCoroutine(countPoints());
+    }
 
     IEnumerator countPoints()
     {

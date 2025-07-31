@@ -25,6 +25,7 @@ public class PerkBuyer : MonoBehaviour
 
     public void buyPerk()
     {
+        pc.Setup();
         foreach (GameObject gain in otherGainers)
         {
             gain.GetComponent<PerkBuyer>().delete();
