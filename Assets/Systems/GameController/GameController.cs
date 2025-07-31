@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI currentPointCounter;
     public int bonusRoundsAmount;
     public PerksController pc;
+    public GameObject perks;
 
     void Start()
     {
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour
     {
         if (!playing)
         {
+            pc.Setup();
             inGameRoundCounter.text = "Round: " + roundTillDeath.ToString();
             inGameQuotaText.text = "Quota: " + quota.ToString();
             if (roundWonShowing)
@@ -130,7 +132,8 @@ public class GameController : MonoBehaviour
                 currentPointCounter.text = "Points: " + points.ToString();
                 roundWon.GetComponent<CanvasGroup>().alpha = 0;
                 roundWon.SetActive(true);
-                roundWon.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+                perks.SetActive(true);
+                roundWon.GetComponent<CanvasGroup>().DOFade(1, 0.5f).OnComplete(() => { perks.SetActive(true); });
             }
             else
             {
@@ -145,6 +148,7 @@ public class GameController : MonoBehaviour
             quotaText.text = points + "/" + quota;
             roundWon.GetComponent<CanvasGroup>().alpha = 0;
             roundWon.SetActive(true);
+            perks.SetActive(false);
             roundWon.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
         }
     }

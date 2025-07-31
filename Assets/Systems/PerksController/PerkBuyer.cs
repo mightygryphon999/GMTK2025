@@ -9,16 +9,10 @@ public class PerkBuyer : MonoBehaviour
     public int type;
     public UnityEngine.UI.Image perk;
     public List<GameObject> otherGainers;
-    private float originalScale;
-
-    void Start()
-    {
-        originalScale = gameObject.transform.localScale.x;
-    }
 
     void OnEnable()
     {
-        gameObject.transform.DOScale(originalScale, 0.25f);
+        gameObject.transform.DOScale(33.58229f, 0.25f);
         perk.sprite = pc.perkImages[type];
         type = Random.Range(0, 13);
     }
