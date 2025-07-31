@@ -14,6 +14,14 @@ public class GameController : MonoBehaviour
     public float preFlipTime;
     public bool stackMode;
     private bool playing;
+    public float quota;
+    public float round;
+
+    void Start()
+    {
+        round = 0;
+        quota = 15;
+    }
 
     public void startGame()
     {
@@ -49,7 +57,7 @@ public class GameController : MonoBehaviour
         {
             CardPlacement card = hand[i];
             int neighboringCards = checkNextInList(i, hand[i].currentCard.GetComponent<CardObject>().points);
-            points += (1 + neighboringCards) * neighboringCards;
+            points += (1 + (neighboringCards - 1)) * neighboringCards;
             i += neighboringCards - 1;
         }
         foreach (CardPlacement handI in hand)
@@ -67,6 +75,8 @@ public class GameController : MonoBehaviour
             } // take out for stack mode
         }
         playing = false;
+        round++;
+        quota = quota + (points / 2);
     }
     public void calculateCurrentSize()
     {
