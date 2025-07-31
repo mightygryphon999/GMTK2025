@@ -60,7 +60,10 @@ public class GameController : MonoBehaviour
         {
             foreach (CardPlacement handI in cards)
             {
-                handI.currentCard.GetComponent<CardObject>().delete();
+                if (handI.currentCard != null)
+                {
+                    handI.currentCard.GetComponent<CardObject>().delete();
+                }
             } // take out for stack mode
         }
         playing = false;

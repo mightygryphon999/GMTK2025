@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!65 &3235895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -433,6 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!65 &262813876
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -673,6 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!65 &968874311
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1210,6 +1214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!65 &985048143
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1413,6 +1418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!65 &1082259796
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1480,6 +1486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!65 &1143766922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1547,6 +1554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!65 &1247552906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1614,6 +1622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!65 &1297097936
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1814,6 +1823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!65 &1396047597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1917,6 +1927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!1 &1641652456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,6 +2038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 0}
+  allCards: []
 --- !u!65 &1746224558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2166,8 +2178,9 @@ MonoBehaviour:
   cardPrefab: {fileID: 6496089859754693901, guid: cd3e137519ceb4c04b337ee7c156f88e, type: 3}
   startingPos: {x: 5.88, y: 0.01, z: 2.73}
   startingRot: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  cardSpawnRate: 1
-  preFlipTime: 10
+  cardSpawnRate: 0.25
+  preFlipTime: 5
+  stackMode: 0
 --- !u!4 &1909434068
 Transform:
   m_ObjectHideFlags: 0

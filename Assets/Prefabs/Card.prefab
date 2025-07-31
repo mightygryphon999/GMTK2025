@@ -289,7 +289,7 @@ MonoBehaviour:
   raiseAmount: 1
   raiseSpeed: 2
   floatAmount: 0.1
-  transferSpeed: 0.5
+  transferSpeed: 0.2
   cardSlot: {fileID: 0}
   placed: 0
   selected: 0
@@ -312,3 +312,4 @@ MonoBehaviour:
   canvas: {fileID: 8220401732978147935}
   hidden: 0
   destroyTime: 0.5
+  flipHeight: 1

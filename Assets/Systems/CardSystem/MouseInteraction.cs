@@ -39,7 +39,7 @@ public class CardInteraction : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<CardPlacement>())
             {
-                if (currentSelected.GetComponent<CardObject>().canMove)
+                if (currentSelected.GetComponent<CardObject>().canMove && !currentSelected.GetComponent<CardObject>().inHand || currentSelected.GetComponent<CardObject>().canMove && hit.collider.gameObject.GetComponent<CardPlacement>().CompareTag("Hand"))
                 {
                     hit.collider.gameObject.GetComponent<CardPlacement>().currentCard = currentSelected;
                     hit.collider.gameObject.GetComponent<CardPlacement>().allCards.Add(currentSelected);
