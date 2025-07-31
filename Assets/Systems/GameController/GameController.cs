@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -16,17 +19,35 @@ public class GameController : MonoBehaviour
     private bool playing;
     public float quota;
     public float round;
+    public TextMeshProUGUI quotaText;
+    public GameObject roundWon;
+    private bool roundWonShowing;
+    public TextMeshProUGUI inGameQuotaText;
+    public TextMeshProUGUI inGameRoundCounter;
+    private int roundTillDeath;
+    private float totalPoints;
+    public TextMeshProUGUI currentPointCounter;
 
     void Start()
     {
+        roundTillDeath = 5;
+        currentPointCounter.text = "Points: 0";
         round = 0;
         quota = 15;
+        roundWonShowing = false;
+        startGame();
     }
 
     public void startGame()
     {
         if (!playing)
         {
+            inGameRoundCounter.text = "Round: " + roundTillDeath.ToString();
+            inGameQuotaText.text = "Quota: " + quota.ToString();
+            if (roundWonShowing)
+            {
+                roundWon.GetComponent<CanvasGroup>().DOFade(0f, 0.5f).OnComplete(() => { roundWon.SetActive(false); roundWonShowing = false; });
+            }
             playing = true;
             StartCoroutine(setupCards());
         }
@@ -52,7 +73,6 @@ public class GameController : MonoBehaviour
 
     public void countPoints()
     {
-        points = 0;
         for (int i = 0; i < hand.Count; i++)
         {
             CardPlacement card = hand[i];
@@ -74,9 +94,38 @@ public class GameController : MonoBehaviour
                 }
             } // take out for stack mode
         }
+        totalPoints += points;
+        currentPointCounter.text = "Points: " + points.ToString();
         playing = false;
-        round++;
-        quota = quota + (points / 2);
+        if (roundTillDeath == 0)
+        {
+            if (points >= quota)
+            {
+                roundTillDeath = 5;
+                roundWonShowing = true;
+                round++;
+                quotaText.text = points + "/" + quota;
+                quota = Mathf.Ceil(quota + (points / 2));
+                points = 0;
+                roundWon.GetComponent<CanvasGroup>().alpha = 0;
+                roundWon.SetActive(true);
+                roundWon.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+            }
+            else
+            {
+                SceneManager.LoadScene("MenuScene");
+            }
+        }
+        else
+        {
+            roundTillDeath--;
+            roundWonShowing = true;
+            round++;
+            quotaText.text = points + "/" + quota;
+            roundWon.GetComponent<CanvasGroup>().alpha = 0;
+            roundWon.SetActive(true);
+            roundWon.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+        }
     }
     public void calculateCurrentSize()
     {
