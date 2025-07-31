@@ -20,10 +20,14 @@ public class PerksController : MonoBehaviour
     }
     public void Setup()
     {
+        foreach (Transform child in perkGroup.transform)
+        {
+            Destroy(child.gameObject);
+        }
         foreach (int perk in currentPerks)
         {
             GameObject perkGameobject = Instantiate(perkImagePrefab);
-            perkGameobject.transform.SetParent(perkImagePrefab.transform);
+            perkGameobject.transform.SetParent(perkGroup.transform);
             perkGameobject.GetComponent<UnityEngine.UI.Image>().sprite = perkImages[perk];
         }
     }
@@ -123,7 +127,7 @@ public class PerksController : MonoBehaviour
         int typeCount = 0;
         for (int i = 0; i < gc.hand.Count; i++)
         {
-            for (int x = 0; x < gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks.Count; i++)
+            for (int x = 0; x < gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks.Count; x++)
             {
                 if (!string.IsNullOrEmpty(gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks[x]))
                 {

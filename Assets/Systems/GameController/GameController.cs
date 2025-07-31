@@ -98,6 +98,11 @@ public class GameController : MonoBehaviour
                 i += neighboringCards - 1;
             }
         }
+        totalPoints += points;
+        yield return StartCoroutine(pc.pointAdditions());
+        currentPointCounter.text = "Points: " + points.ToString();
+        playing = false;
+        pc.Setup();
         foreach (CardPlacement handI in hand)
         {
             if (handI.currentCard != null)
@@ -115,10 +120,6 @@ public class GameController : MonoBehaviour
                 }
             } // take out for stack mode
         }
-        totalPoints += points;
-        yield return StartCoroutine(pc.pointAdditions());
-        currentPointCounter.text = "Points: " + points.ToString();
-        playing = false;
         if (roundTillDeath == 1)
         {
             if (points >= quota)

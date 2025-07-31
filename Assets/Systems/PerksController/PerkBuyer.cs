@@ -13,8 +13,8 @@ public class PerkBuyer : MonoBehaviour
     void OnEnable()
     {
         gameObject.transform.DOScale(33.58229f, 0.25f);
-        perk.sprite = pc.perkImages[type];
         type = Random.Range(0, 13);
+        perk.sprite = pc.perkImages[type];
     }
 
     public void buyPerk()
