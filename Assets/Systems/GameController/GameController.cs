@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour
         totalPoints += points;
         currentPointCounter.text = "Points: " + points.ToString();
         playing = false;
-        if (roundTillDeath == 0)
+        if (roundTillDeath == 1)
         {
             if (points >= quota)
             {
@@ -107,6 +107,7 @@ public class GameController : MonoBehaviour
                 quotaText.text = points + "/" + quota;
                 quota = Mathf.Ceil(quota + (points / 2));
                 points = 0;
+                currentPointCounter.text = "Points: " + points.ToString();
                 roundWon.GetComponent<CanvasGroup>().alpha = 0;
                 roundWon.SetActive(true);
                 roundWon.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
