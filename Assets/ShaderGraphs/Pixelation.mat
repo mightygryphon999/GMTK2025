@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorResolution: 100
-    - _DitherSpeed: 0.01
+    - _DitherSpeed: 0
     - _PixelSize: 300
     m_Colors: []
   m_BuildTextureStacks: []
