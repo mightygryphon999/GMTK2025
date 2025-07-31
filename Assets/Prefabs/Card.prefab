@@ -272,8 +272,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1.9999998, z: 0.3454863}
-  m_Center: {x: 0, y: -4.271494e-16, z: 0.155058}
+  m_Size: {x: 2, y: 1.9999998, z: 0.6737228}
+  m_Center: {x: 0, y: 1.7731126e-17, z: -0.009060219}
 --- !u!114 &4008714768556379503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,3 +308,7 @@ MonoBehaviour:
   currentPerks: 
   points: 0
   sprite: {fileID: 7518476639646314173}
+  flipTime: 0.5
+  canvas: {fileID: 8220401732978147935}
+  hidden: 0
+  destroyTime: 0.5

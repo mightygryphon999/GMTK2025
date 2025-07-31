@@ -12,11 +12,16 @@ public class GameController : MonoBehaviour
     public Quaternion startingRot;
     public float cardSpawnRate;
     public float preFlipTime;
+    public bool stackMode;
+    private bool playing;
 
-    [ContextMenu("Start Game")]
     public void startGame()
     {
-        StartCoroutine(setupCards());
+        if (!playing)
+        {
+            playing = true;
+            StartCoroutine(setupCards());
+        }
     }
 
     IEnumerator setupCards()
@@ -25,13 +30,13 @@ public class GameController : MonoBehaviour
         {
             GameObject newCard = Instantiate(cardPrefab, startingPos, startingRot);
             card.currentCard = newCard;
-            newCard.GetComponent<CardObject>().placeDown(card.gameObject, true);
+            card.allCards.Add(newCard);
+            newCard.GetComponent<CardObject>().placeDown(card.gameObject, true, preFlipTime, true, true);
             newCard.GetComponent<CardObject>().placed = true;
             newCard.GetComponent<CardObject>().selected = false;
             newCard.GetComponent<CardObject>().cardSlot = card.gameObject;
             newCard.GetComponent<CardObject>().canMove = true;
             newCard.GetComponent<CardObject>().points = Random.Range(0, newCard.GetComponent<CardObject>().images.Count - 1);
-            newCard.GetComponent<CardObject>().hide();
             newCard = null;
             yield return new WaitForSeconds(cardSpawnRate);
         }
@@ -50,6 +55,24 @@ public class GameController : MonoBehaviour
         foreach (CardPlacement handI in hand)
         {
             handI.currentCard.GetComponent<CardObject>().delete();
+        }
+        if (!stackMode)
+        {
+            foreach (CardPlacement handI in cards)
+            {
+                handI.currentCard.GetComponent<CardObject>().delete();
+            } // take out for stack mode
+        }
+        playing = false;
+    }
+    public void calculateCurrentSize()
+    {
+        foreach (CardPlacement handI in cards)
+        {
+            foreach (GameObject card in handI.allCards)
+            {
+                card.GetComponent<CardObject>().delete();
+            }
         }
     }
     public int checkNextInList(int index, int matchPoints)

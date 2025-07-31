@@ -42,7 +42,8 @@ public class CardInteraction : MonoBehaviour
                 if (currentSelected.GetComponent<CardObject>().canMove)
                 {
                     hit.collider.gameObject.GetComponent<CardPlacement>().currentCard = currentSelected;
-                    currentSelected.GetComponent<CardObject>().placeDown(hit.collider.gameObject, false);
+                    hit.collider.gameObject.GetComponent<CardPlacement>().allCards.Add(currentSelected);
+                    currentSelected.GetComponent<CardObject>().placeDown(hit.collider.gameObject, false, 0, true, false);
                     currentSelected.GetComponent<CardObject>().placed = true;
                     currentSelected.GetComponent<CardObject>().selected = false;
                     currentSelected.GetComponent<CardObject>().cardSlot = hit.collider.gameObject;
@@ -64,6 +65,10 @@ public class CardInteraction : MonoBehaviour
             {
                 if (!hit.collider.gameObject.GetComponent<CardObject>().selected && hit.collider.gameObject.GetComponent<CardObject>().canClick)
                 {
+                    if (hit.collider.gameObject.GetComponent<CardObject>().cardSlot != null)
+                    {
+                        hit.collider.gameObject.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().allCards.Remove(hit.collider.gameObject);
+                    }
                     hit.collider.gameObject.GetComponent<CardObject>().interact();
                     currentSelected = hit.collider.gameObject;
                     currentSelected.GetComponent<CardObject>().placed = false;

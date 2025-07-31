@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine.UI;
 using DG.Tweening.Plugins.Options;
+using System.Collections;
 
 public class CardObject : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class CardObject : MonoBehaviour
     public int points;
     public UnityEngine.UI.Image sprite;
     public float flipTime;
+    public GameObject canvas;
     public bool hidden;
     public float destroyTime;
 
@@ -52,23 +54,26 @@ public class CardObject : MonoBehaviour
     public void show()
     {
         hidden = false;
-        gameObject.transform.DORotate(new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, 0), flipTime).SetEase(Ease.InBounce);
+        canvas.SetActive(true);
+        canClick = true;
+        gameObject.transform.DORotate(new Vector3(-90, gameObject.transform.eulerAngles.y, gameObject.transform.eulerAngles.z), flipTime).SetEase(Ease.InBounce);
     }
 
     public void hide()
     {
         hidden = true;
-        gameObject.transform.DORotate(new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, 180), flipTime).SetEase(Ease.InBounce);
+        canvas.SetActive(false);
+        gameObject.transform.DORotate(new Vector3(90, gameObject.transform.eulerAngles.y, gameObject.transform.eulerAngles.z), flipTime).SetEase(Ease.InBounce);
     }
 
     public void interact()
     {
         if (!selected)
         {
-            if (hidden)
-            {
-                show();
-            }
+            // if (hidden)
+            // {
+            //     show();
+            // }
             canMove = false;
             canClick = false;
             transform.DOMoveY(transform.position.y + raiseAmount, raiseSpeed)
@@ -85,18 +90,35 @@ public class CardObject : MonoBehaviour
         {
             if (!placed)
             {
-                placeDown(cardSlot, false);
+                placeDown(cardSlot, false, 0, true, false);
             }
         }
     }
 
-    public void placeDown(GameObject target, bool hide)
+    public void placeDown(GameObject target, bool hide, float watiTime, bool show, bool overideShow)
     {
         selected = false;
         canClick = false;
         gameObject.transform.SetParent(target.transform);
-        transform.DOMove(new Vector3(target.transform.position.x, target.transform.position.y + floatAmount, target.transform.position.z), transferSpeed).SetEase(Ease.OutSine).OnComplete(() => {hovering = false; canClick = true; if (hide) { gameObject.GetComponent<CardObject>().hide(); } });
-        transform.DORotate(new Vector3(-90, target.transform.eulerAngles.y, 0), transferSpeed).SetEase(Ease.OutSine);
+        transform.DOMove(new Vector3(target.transform.position.x, target.transform.position.y + floatAmount, target.transform.position.z), transferSpeed).SetEase(Ease.OutSine).OnComplete(() => { hovering = false; canClick = true; if (hide) { StartCoroutine(flipAfterTime(watiTime)); } });
+        if (show && target.CompareTag("Hand") || overideShow)
+        {
+            canvas.SetActive(true);
+            transform.DORotate(new Vector3(-90, target.transform.eulerAngles.y, 0), transferSpeed).SetEase(Ease.OutSine);
+        }
+        else
+        {
+            canvas.SetActive(false);
+            transform.DORotate(new Vector3(90, target.transform.eulerAngles.y, 0), transferSpeed).SetEase(Ease.OutSine);
+        }
+    }
+
+    IEnumerator flipAfterTime(float timer)
+    {
+        canClick = false;
+        yield return new WaitForSeconds(timer);
+        canClick = true;
+        gameObject.GetComponent<CardObject>().hide();
     }
 
     // Update is called once per frame
