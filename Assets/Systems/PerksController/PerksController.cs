@@ -96,28 +96,26 @@ public class PerksController : MonoBehaviour
         int typeCount = 0;
         for (int i = 0; i < gc.hand.Count; i++)
         {
-            for (int x = 0; x < gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks.Count; i++)
+            int x = gc.hand[i].currentCard.GetComponent<CardObject>().points;
+            if (!string.IsNullOrEmpty(gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks[x]))
             {
-                if (!string.IsNullOrEmpty(gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks[x]))
+                string[] list = gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks[x].Split(':');
+                foreach (string perk in list)
                 {
-                    string[] list = gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks[x].Split(':');
-                    foreach (string perk in list)
+                    // if (wantType)
+                    // {
+                    if (perk == type.ToString() || perk == "4" && wantType)
                     {
-                        // if (wantType)
-                        // {
-                            if (perk == type.ToString() || perk == "4" && wantType)
-                            {
-                                typeCount++;
-                            }
-                        // }
-                        // else
-                        // {
-                        //     if (perk != type.ToString())
-                        //     {
-                        //         typeCount++;
-                        //     }
-                        // }
+                        typeCount++;
                     }
+                    // }
+                    // else
+                    // {
+                    //     if (perk != type.ToString())
+                    //     {
+                    //         typeCount++;
+                    //     }
+                    // }
                 }
             }
         }
@@ -129,17 +127,15 @@ public class PerksController : MonoBehaviour
         int typeCount = 0;
         for (int i = 0; i < gc.hand.Count; i++)
         {
-            for (int x = 0; x < gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks.Count; x++)
+            int x = gc.hand[i].currentCard.GetComponent<CardObject>().points;
+            if (!string.IsNullOrEmpty(gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks[x]))
             {
-                if (!string.IsNullOrEmpty(gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks[x]))
+                string[] list = gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks[x].Split(':');
+                foreach (string perk in list)
                 {
-                    string[] list = gc.hand[i].currentCard.GetComponent<CardObject>().currentPerks[x].Split(':');
-                    foreach (string perk in list)
+                    if (perk == type.ToString() || perk == "4")
                     {
-                        if (perk == type.ToString() || perk == "4")
-                        {
-                            typeCount++;
-                        }
+                        typeCount++;
                     }
                 }
             }
