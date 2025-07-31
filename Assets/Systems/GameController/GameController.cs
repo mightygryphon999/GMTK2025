@@ -27,6 +27,9 @@ public class GameController : MonoBehaviour
     private int roundTillDeath;
     private float totalPoints;
     public TextMeshProUGUI currentPointCounter;
+    public int bonusRoundsAmount;
+    public PerksController pc;
+    public GameObject perks;
 
     void Start()
     {
@@ -42,6 +45,7 @@ public class GameController : MonoBehaviour
     {
         if (!playing)
         {
+            pc.Setup();
             inGameRoundCounter.text = "Round: " + roundTillDeath.ToString();
             inGameQuotaText.text = "Quota: " + quota.ToString();
             if (roundWonShowing)
@@ -70,14 +74,18 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(cardSpawnRate);
         }
     }
+    public void done()
+    {
+        StartCoroutine(countPoints());
+    }
 
-    public void countPoints()
+    IEnumerator countPoints()
     {
         for (int i = 0; i < hand.Count; i++)
         {
             if (hand[i].currentCard == null)
             {
-                return;
+                yield break;
             }
         }
         for (int i = 0; i < hand.Count; i++)
@@ -87,9 +95,16 @@ public class GameController : MonoBehaviour
             {
                 int neighboringCards = checkNextInList(i, hand[i].currentCard.GetComponent<CardObject>().points);
                 points += (1 + (neighboringCards - 1)) * neighboringCards;
+                Debug.Log(neighboringCards);
+                Debug.Log(points);
                 i += neighboringCards - 1;
             }
         }
+        yield return StartCoroutine(pc.pointAdditions());
+        totalPoints += points;
+        currentPointCounter.text = "Points: " + points.ToString();
+        playing = false;
+        pc.Setup();
         foreach (CardPlacement handI in hand)
         {
             if (handI.currentCard != null)
@@ -107,14 +122,11 @@ public class GameController : MonoBehaviour
                 }
             } // take out for stack mode
         }
-        totalPoints += points;
-        currentPointCounter.text = "Points: " + points.ToString();
-        playing = false;
         if (roundTillDeath == 1)
         {
             if (points >= quota)
             {
-                roundTillDeath = 5;
+                roundTillDeath = 5 + bonusRoundsAmount;
                 roundWonShowing = true;
                 round++;
                 quotaText.text = points + "/" + quota;
@@ -123,7 +135,8 @@ public class GameController : MonoBehaviour
                 currentPointCounter.text = "Points: " + points.ToString();
                 roundWon.GetComponent<CanvasGroup>().alpha = 0;
                 roundWon.SetActive(true);
-                roundWon.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+                perks.SetActive(true);
+                roundWon.GetComponent<CanvasGroup>().DOFade(1, 0.5f).OnComplete(() => { perks.SetActive(true); });
             }
             else
             {
@@ -138,6 +151,7 @@ public class GameController : MonoBehaviour
             quotaText.text = points + "/" + quota;
             roundWon.GetComponent<CanvasGroup>().alpha = 0;
             roundWon.SetActive(true);
+            perks.SetActive(false);
             roundWon.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
         }
     }
