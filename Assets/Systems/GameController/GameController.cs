@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
     private int roundTillDeath;
     private float totalPoints;
     public TextMeshProUGUI currentPointCounter;
+    public int bonusRoundsAmount;
 
     void Start()
     {
@@ -114,7 +115,7 @@ public class GameController : MonoBehaviour
         {
             if (points >= quota)
             {
-                roundTillDeath = 5;
+                roundTillDeath = 5 + bonusRoundsAmount;
                 roundWonShowing = true;
                 round++;
                 quotaText.text = points + "/" + quota;
