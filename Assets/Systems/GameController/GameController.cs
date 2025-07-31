@@ -76,13 +76,19 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < hand.Count; i++)
         {
             CardPlacement card = hand[i];
-            int neighboringCards = checkNextInList(i, hand[i].currentCard.GetComponent<CardObject>().points);
-            points += (1 + (neighboringCards - 1)) * neighboringCards;
-            i += neighboringCards - 1;
+            if (card.currentCard != null)
+            {
+                int neighboringCards = checkNextInList(i, hand[i].currentCard.GetComponent<CardObject>().points);
+                points += (1 + (neighboringCards - 1)) * neighboringCards;
+                i += neighboringCards - 1;
+            }
         }
         foreach (CardPlacement handI in hand)
         {
-            handI.currentCard.GetComponent<CardObject>().delete();
+            if (handI.currentCard != null)
+            {
+                handI.currentCard.GetComponent<CardObject>().delete();
+            }
         }
         if (!stackMode)
         {
