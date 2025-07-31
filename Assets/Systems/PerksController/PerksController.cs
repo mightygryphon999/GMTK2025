@@ -119,7 +119,10 @@ public class PerksController : MonoBehaviour
                 }
             }
         }
-        gc.points *= Mathf.Max(1, typeCount * multiply);
+        Debug.Log(typeCount);
+        Debug.Log("Points before: " + gc.points);
+        gc.points += Mathf.Max(1, typeCount * multiply);
+        Debug.Log(gc.points);
     }
     public void addPoints(int type, int addition)
     {

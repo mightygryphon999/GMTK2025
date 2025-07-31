@@ -95,6 +95,8 @@ public class GameController : MonoBehaviour
             {
                 int neighboringCards = checkNextInList(i, hand[i].currentCard.GetComponent<CardObject>().points);
                 points += (1 + (neighboringCards - 1)) * neighboringCards;
+                Debug.Log(neighboringCards);
+                Debug.Log(points);
                 i += neighboringCards - 1;
             }
         }
