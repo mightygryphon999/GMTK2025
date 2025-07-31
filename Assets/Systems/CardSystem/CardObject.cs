@@ -2,7 +2,6 @@ using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine.UI;
 using DG.Tweening.Plugins.Options;
 using System.Collections;
