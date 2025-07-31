@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     private float totalPoints;
     public TextMeshProUGUI currentPointCounter;
     public int bonusRoundsAmount;
+    public PerksController pc;
 
     void Start()
     {
@@ -72,13 +73,13 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void countPoints()
+    IEnumerator countPoints()
     {
         for (int i = 0; i < hand.Count; i++)
         {
             if (hand[i].currentCard == null)
             {
-                return;
+                yield break;
             }
         }
         for (int i = 0; i < hand.Count; i++)
@@ -109,6 +110,7 @@ public class GameController : MonoBehaviour
             } // take out for stack mode
         }
         totalPoints += points;
+        yield return StartCoroutine(pc.pointAdditions());
         currentPointCounter.text = "Points: " + points.ToString();
         playing = false;
         if (roundTillDeath == 1)

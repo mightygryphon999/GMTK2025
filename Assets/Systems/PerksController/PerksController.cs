@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
@@ -22,8 +23,9 @@ public class PerksController : MonoBehaviour
             perkGameobject.GetComponent<UnityEngine.UI.Image>().sprite = perkImages[perk];
         }
     }
-    public void pointAdditions()
+    public IEnumerator pointAdditions()
     {
+        yield return new WaitForEndOfFrame();
         foreach (int perk in currentPerks)
         {
             if (perk == 1)
@@ -78,7 +80,6 @@ public class PerksController : MonoBehaviour
             {
                 multiplePoints(2, 2, true);
             }
-            
         }
     }
     public void multiplePoints(int type, int multiply, bool wantType)
