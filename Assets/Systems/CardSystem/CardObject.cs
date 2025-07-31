@@ -22,7 +22,7 @@ public class CardObject : MonoBehaviour
     public bool canClick;
     public List<Sprite> images;
     public List<Sprite> perks;
-    public List<string> currentPerks; // 1 is green, 2 is red, 3 is orange, 4 is rainbow
+    public List<string> currentPerks; // 1 is green, 2 is red, 3 is orange, 4 is rainbow, 5 is no rice
     public int points;
     public UnityEngine.UI.Image sprite;
     public float flipTime;
