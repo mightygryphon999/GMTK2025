@@ -42,16 +42,20 @@ public class CardObject : MonoBehaviour
         hover = transform.position.y + raiseAmount;
         canClick = true;
         sprite.sprite = images[points];
+        setupPerks();
     }
 
     public void setupPerks()
     {
-        string[] parts = currentPerks[points].Split(':');
-        for (int i = parts.Length - 1; i >= 0; i--)
+        if (currentPerks[points] != null)
         {
-            GameObject perk = Instantiate(perkImage);
-            perk.transform.SetParent(perkSlot.transform);
-            perk.GetComponent<UnityEngine.UI.Image>().sprite = perks[int.Parse(parts[i])];
+            string[] parts = currentPerks[points].Split(':');
+            for (int i = parts.Length - 1; i >= 0; i--)
+            {
+                GameObject perk = Instantiate(perkImage);
+                perk.transform.SetParent(perkSlot.transform, worldPositionStays: false);
+                perk.GetComponent<UnityEngine.UI.Image>().sprite = perks[int.Parse(parts[i])-1];
+            }
         }
     }
 
