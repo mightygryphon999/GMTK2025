@@ -22,7 +22,7 @@ public class CardObject : MonoBehaviour
     public bool canClick;
     public List<Sprite> images;
     public List<Sprite> perks;
-    public List<int> currentPerks; // 1 is green, 2 is red, 3 is orange, 4 is rainbow
+    public List<string> currentPerks; // 1 is green, 2 is red, 3 is orange, 4 is rainbow
     public int points;
     public UnityEngine.UI.Image sprite;
     public float flipTime;
@@ -32,6 +32,8 @@ public class CardObject : MonoBehaviour
     public float flipHeight;
 
     public bool inHand;
+    public GameObject perkImage;
+    public GameObject perkSlot;
     // Add the perk visual initialization
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -44,7 +46,13 @@ public class CardObject : MonoBehaviour
 
     public void setupPerks()
     {
-        // put the perk setup code here
+        string[] parts = currentPerks[points].Split(':');
+        for (int i = parts.Length - 1; i >= 0; i--)
+        {
+            GameObject perk = Instantiate(perkImage);
+            perk.transform.SetParent(perkSlot.transform);
+            perk.GetComponent<UnityEngine.UI.Image>().sprite = perks[int.Parse(parts[i])];
+        }
     }
 
     public void delete()
