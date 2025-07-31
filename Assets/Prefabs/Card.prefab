@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2726983613063472353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 618115122598198446}
+  - component: {fileID: 4356792329329514057}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &618115122598198446
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2726983613063472353}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2913474223322566268}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1.53005}
+  m_SizeDelta: {x: 1.3142, y: 0.4167}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4356792329329514057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2726983613063472353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0.01
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &8220401732978147935
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,6 +94,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6344812912843879066}
+  - {fileID: 618115122598198446}
   m_Father: {fileID: 5867468913989799863}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -169,7 +232,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -296,16 +359,33 @@ MonoBehaviour:
   canMove: 0
   canClick: 0
   images:
-  - {fileID: -1481955777, guid: 4c7ed71627349425dab67bf698d2f29f, type: 3}
-  - {fileID: -819034473, guid: 4c7ed71627349425dab67bf698d2f29f, type: 3}
-  - {fileID: -602436771, guid: 4c7ed71627349425dab67bf698d2f29f, type: 3}
-  - {fileID: 1582537555, guid: 4c7ed71627349425dab67bf698d2f29f, type: 3}
-  - {fileID: 666489613, guid: 4c7ed71627349425dab67bf698d2f29f, type: 3}
-  - {fileID: 1709310682, guid: 4c7ed71627349425dab67bf698d2f29f, type: 3}
-  - {fileID: 1787883371, guid: 4c7ed71627349425dab67bf698d2f29f, type: 3}
-  - {fileID: -1764382288, guid: 4c7ed71627349425dab67bf698d2f29f, type: 3}
-  perks: []
-  currentPerks: 
+  - {fileID: 21300000, guid: 230d0f1943b8d4ff59c44c3e9d3b5956, type: 3}
+  - {fileID: 21300000, guid: 08420fb3ca4c44488b26380cfaa9ebdf, type: 3}
+  - {fileID: 21300000, guid: 5308be2a2cadb4ab4b2c599bb581bd70, type: 3}
+  - {fileID: 21300000, guid: 3aae615179b5845a082f71bb83eea08d, type: 3}
+  - {fileID: 21300000, guid: 757e3a0178e0b4206909de932ae53d5b, type: 3}
+  - {fileID: 21300000, guid: 71ec265008e9149eb80d41d84ce96b3a, type: 3}
+  - {fileID: 21300000, guid: 97576d67684914cd99bd50e99ecea818, type: 3}
+  - {fileID: 21300000, guid: 55000d50375c74b5b9b427a7ae5dd826, type: 3}
+  - {fileID: 21300000, guid: 7606f782e51ec4dbfabc39f1a89c2311, type: 3}
+  - {fileID: 21300000, guid: eabc18f56536d48e0b75796ca360e0a8, type: 3}
+  perks:
+  - {fileID: 21300000, guid: eb665bf0b31e54ea79bed33641c30296, type: 3}
+  - {fileID: 21300000, guid: 77ae4a09d29d040cb9151eed2bc5d6f5, type: 3}
+  - {fileID: 21300000, guid: c410c21dbff7f4b3394a45d4bca713f8, type: 3}
+  - {fileID: 21300000, guid: 413c6bd52418e446c910d42b1a4e675d, type: 3}
+  - {fileID: 21300000, guid: 6bc35535de0b740dca9cdb525e157487, type: 3}
+  currentPerks:
+  - 3
+  - 2
+  - 1
+  - 2:2
+  - 1:3
+  - 4:2
+  - 4
+  - 
+  - 1:1
+  - 1:3
   points: 0
   sprite: {fileID: 7518476639646314173}
   flipTime: 0.5
@@ -313,3 +393,6 @@ MonoBehaviour:
   hidden: 0
   destroyTime: 0.5
   flipHeight: 1
+  inHand: 0
+  perkImage: {fileID: 4629876654170316201, guid: ec64b74aa00da4591bcfb6489ecf2ddf, type: 3}
+  perkSlot: {fileID: 2726983613063472353}
