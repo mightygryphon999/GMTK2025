@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
             newCard.GetComponent<CardObject>().selected = false;
             newCard.GetComponent<CardObject>().cardSlot = card.gameObject;
             newCard.GetComponent<CardObject>().canMove = true;
+            newCard.GetComponent<CardObject>().points = Random.Range(0, newCard.GetComponent<CardObject>().images.Count - 1);
             newCard = null;
             yield return new WaitForSeconds(cardSpawnRate);
         }
