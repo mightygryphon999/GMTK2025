@@ -75,6 +75,13 @@ public class GameController : MonoBehaviour
     {
         for (int i = 0; i < hand.Count; i++)
         {
+            if (hand[i].currentCard == null)
+            {
+                return;
+            }
+        }
+        for (int i = 0; i < hand.Count; i++)
+        {
             CardPlacement card = hand[i];
             if (card.currentCard != null)
             {
