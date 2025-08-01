@@ -32,6 +32,7 @@ public class BegenningVideoController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && playing)
         {
+            playing = false;
             text.SetActive(false);
             vp.Stop();
             vp.gameObject.SetActive(false);
