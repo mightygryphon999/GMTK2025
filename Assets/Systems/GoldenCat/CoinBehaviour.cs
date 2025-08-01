@@ -4,6 +4,13 @@ public class CoinBehaviour : MonoBehaviour
 {
     public Vector3 pushDirection;
     public float pushMagnitude;
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            pushCoin();
+        }
+    }
     public void pushCoin()
     {
         gameObject.GetComponent<Rigidbody>().AddForce(pushDirection.normalized * pushMagnitude, ForceMode.Impulse);
