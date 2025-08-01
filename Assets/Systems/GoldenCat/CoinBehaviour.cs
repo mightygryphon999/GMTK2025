@@ -4,6 +4,11 @@ public class CoinBehaviour : MonoBehaviour
 {
     public Vector3 pushDirection;
     public float pushMagnitude;
+    public GoldenCatController gcc;
+    void Start()
+    {
+        gcc = FindAnyObjectByType<GoldenCatController>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))
@@ -19,6 +24,7 @@ public class CoinBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("coinDestroy"))
         {
+            gcc.activeCoins.Remove(gameObject);
             Destroy(gameObject);
         }
     }

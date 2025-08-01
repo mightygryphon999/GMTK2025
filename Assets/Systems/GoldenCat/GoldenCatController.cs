@@ -11,12 +11,20 @@ public class GoldenCatController : MonoBehaviour
     public List<int> goldenCoinCost;
     public int stage;
     public Animator anim;
+    public Persistent p;
+    void Start()
+    {
+        p = FindAnyObjectByType<Persistent>();
+        amountOfCoins = p.coin;
+        stage = p.level;
+    }
+
     public void spawnCoins(int amount)
     {
         amountOfCoins += amount;
         for (int i = 0; i < amount; i++)
         {
-            GameObject coin = Instantiate(coinPrefab, spawnLocation, Quaternion.Euler(0,0,0));
+            GameObject coin = Instantiate(coinPrefab, spawnLocation, Quaternion.Euler(0, 0, 0));
             activeCoins.Add(coin);
         }
     }
