@@ -87,7 +87,7 @@ public class CardObject : MonoBehaviour
 
     public void interact()
     {
-        if (!selected)
+        if (!selected && canClick)
         {
             // if (hidden)
             // {
