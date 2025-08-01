@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -12,11 +13,16 @@ public class GoldenCatController : MonoBehaviour
     public int stage;
     public Animator anim;
     public Persistent p;
+    public TextMeshProUGUI text;
     void Start()
     {
         p = FindAnyObjectByType<Persistent>();
         amountOfCoins = p.coin;
         stage = p.level;
+    }
+    void Update()
+    {
+        text.text = amountOfCoins + "/" + goldenCoinCost[stage];
     }
 
     public void spawnCoins(int amount)
