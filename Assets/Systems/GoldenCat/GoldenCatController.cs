@@ -1,0 +1,48 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GoldenCatController : MonoBehaviour
+{
+    public List<GameObject> activeCoins;
+    public GameObject coinPrefab;
+    public int amountOfCoins;
+    public Vector3 spawnLocation;
+    public List<int> goldenCoinCost;
+    public int stage;
+    public Animator anim;
+    public void spawnCoins(int amount)
+    {
+        amountOfCoins += amount;
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject coin = Instantiate(coinPrefab, spawnLocation, Random.rotation);
+            activeCoins.Add(coin);
+        }
+    }
+    public void pushCoins()
+    {
+        for (int i = 0; i < activeCoins.Count; i++)
+        {
+            if (activeCoins[i] != null)
+            {
+                activeCoins[i].GetComponent<CoinBehaviour>().pushCoin();
+            }
+        }
+    }
+    public void checkGoldenCatBuy()
+    {
+        if (amountOfCoins >= goldenCoinCost[stage])
+        {
+            stage++;
+            pushCoins();
+            if (stage == goldenCoinCost.Count)
+            {
+                // do gameover thingy here
+                return;
+            }
+            amountOfCoins -= goldenCoinCost[stage];
+            anim.SetInteger("state", stage);
+        }
+        
+    }
+}
