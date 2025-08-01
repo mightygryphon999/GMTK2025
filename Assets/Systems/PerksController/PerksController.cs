@@ -44,7 +44,7 @@ public class PerksController : MonoBehaviour
             {
                 // fill in later
             }
-            else if (perk == 3)
+            else if (perk == 3 && gc.roundTillDeath == 1)
             {
                 gc.bonusRoundsAmount += 1;
             }

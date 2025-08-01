@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -5,7 +6,7 @@ public class CardInteraction : MonoBehaviour
 {
     // private Vector3 screenPoint;
     // private Vector3 worldPos;
-    private GameObject currentSelected;
+    public GameObject currentSelected;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -70,7 +71,7 @@ public class CardInteraction : MonoBehaviour
                 {
                     if (hit.collider.gameObject.GetComponent<CardObject>().cardSlot != null)
                     {
-                        hit.collider.gameObject.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().currentCard = null;
+                        currentSelected.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().currentCard = null;
                         hit.collider.gameObject.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().allCards.Remove(hit.collider.gameObject);
                     }
                     hit.collider.gameObject.GetComponent<CardObject>().interact();
