@@ -5,13 +5,16 @@ public class BegenningVideoController : MonoBehaviour
 {
     public VideoPlayer vp;
     public GameController gc;
+    public GameObject text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         vp.loopPointReached += videoFinished;
+        text.SetActive(true);
     }
     void videoFinished(VideoPlayer vp)
     {
+        text.SetActive(false);
         vp.gameObject.SetActive(false);
         gc.startGame();
     }
@@ -20,6 +23,7 @@ public class BegenningVideoController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            text.SetActive(false);
             vp.Stop();
             vp.gameObject.SetActive(false);
             gc.startGame();
