@@ -12,13 +12,13 @@ public class HandSlotCreator : MonoBehaviour
     {
         rend.material.mainTexture = textures[0];
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            createNewHandSlot();
-        }
-    }
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.G))
+    //     {
+    //         createNewHandSlot();
+    //     }
+    // }
     public void createNewHandSlot()
     {
         if (slots.Count != 0)
