@@ -43,6 +43,7 @@ public class CardInteraction : MonoBehaviour
                 {
                     if (currentSelected.GetComponent<CardObject>().canMove && !currentSelected.GetComponent<CardObject>().inHand || currentSelected.GetComponent<CardObject>().canMove && hit.collider.gameObject.GetComponent<CardPlacement>().CompareTag("Hand"))
                     {
+                        currentSelected.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().currentCard = null;
                         hit.collider.gameObject.GetComponent<CardPlacement>().currentCard = currentSelected;
                         hit.collider.gameObject.GetComponent<CardPlacement>().allCards.Add(currentSelected);
                         currentSelected.GetComponent<CardObject>().placeDown(hit.collider.gameObject, false, 0, true, false);
@@ -70,7 +71,6 @@ public class CardInteraction : MonoBehaviour
                 {
                     if (hit.collider.gameObject.GetComponent<CardObject>().cardSlot != null)
                     {
-                        hit.collider.gameObject.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().currentCard = null;
                         hit.collider.gameObject.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().allCards.Remove(hit.collider.gameObject);
                     }
                     hit.collider.gameObject.GetComponent<CardObject>().interact();

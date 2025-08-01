@@ -21,6 +21,8 @@ public class BegenningVideoController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             vp.Stop();
+            vp.gameObject.SetActive(false);
+            gc.startGame();
         }
     }
 }
