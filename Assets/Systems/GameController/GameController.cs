@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
     public PerksController pc;
     public GameObject perks;
     public CardInteraction ci;
+    public GoldenCatController gcc;
 
     void Start()
     {
@@ -139,6 +140,7 @@ public class GameController : MonoBehaviour
         {
             if (points >= quota)
             {
+                gcc.spawnCoins(((int)points)/2);
                 roundTillDeath = 5 + bonusRoundsAmount;
                 roundWonShowing = true;
                 round++;
