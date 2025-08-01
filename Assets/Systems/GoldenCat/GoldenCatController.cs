@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class GoldenCatController : MonoBehaviour
@@ -15,7 +16,7 @@ public class GoldenCatController : MonoBehaviour
         amountOfCoins += amount;
         for (int i = 0; i < amount; i++)
         {
-            GameObject coin = Instantiate(coinPrefab, spawnLocation, Random.rotation);
+            GameObject coin = Instantiate(coinPrefab, spawnLocation, Quaternion.Euler(0,0,0));
             activeCoins.Add(coin);
         }
     }

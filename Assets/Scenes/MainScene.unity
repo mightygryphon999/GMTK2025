@@ -3122,7 +3122,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 1858195618, guid: 27c9f38d1afeb484ba368d4c7a79f9ab, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3261,9 +3261,9 @@ MonoBehaviour:
   coinPrefab: {fileID: 1046026819473841366, guid: 57d244f102eeb46929ad237a74bda86e, type: 3}
   amountOfCoins: 0
   spawnLocation: {x: -6.7, y: 15.06, z: 4.988e-12}
-  goldenCoinCost: 
+  goldenCoinCost: 0f0000000f00000096000000c80000002c010000
   stage: 0
-  anim: {fileID: 0}
+  anim: {fileID: 1353797815}
 --- !u!4 &1400468566
 Transform:
   m_ObjectHideFlags: 0
@@ -4078,7 +4078,7 @@ MonoBehaviour:
   pc: {fileID: 26272553}
   perks: {fileID: 1903746339}
   ci: {fileID: 78490767}
-  gcc: {fileID: 0}
+  gcc: {fileID: 1400468565}
 --- !u!4 &1909434068
 Transform:
   m_ObjectHideFlags: 0
