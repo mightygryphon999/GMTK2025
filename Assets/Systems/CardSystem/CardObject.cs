@@ -60,7 +60,11 @@ public class CardObject : MonoBehaviour
 
     public void delete()
     {
-        cardSlot.GetComponent<CardPlacement>().currentCard = null;
+        DOTween.Kill(gameObject.transform);
+        if (cardSlot != null)
+        {
+            cardSlot.GetComponent<CardPlacement>().currentCard = null;
+        }
         gameObject.transform.DOScale(0.01f, destroyTime).OnComplete(() => { Destroy(gameObject); });
     }
 
@@ -83,7 +87,7 @@ public class CardObject : MonoBehaviour
 
     public void interact()
     {
-        if (!selected)
+        if (!selected && canClick)
         {
             // if (hidden)
             // {

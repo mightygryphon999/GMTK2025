@@ -67,11 +67,12 @@ public class CardInteraction : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<CardObject>())
             {
+                Debug.Log("Card");
                 if (!hit.collider.gameObject.GetComponent<CardObject>().selected && hit.collider.gameObject.GetComponent<CardObject>().canClick)
                 {
                     if (hit.collider.gameObject.GetComponent<CardObject>().cardSlot != null)
                     {
-                        currentSelected.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().currentCard = null;
+                        hit.collider.gameObject.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().currentCard = null;
                         hit.collider.gameObject.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().allCards.Remove(hit.collider.gameObject);
                     }
                     hit.collider.gameObject.GetComponent<CardObject>().interact();

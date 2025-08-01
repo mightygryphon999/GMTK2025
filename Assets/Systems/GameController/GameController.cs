@@ -89,13 +89,13 @@ public class GameController : MonoBehaviour
                 yield break;
             }
         }
-        for (int i = 0; i < cards.Count; i++)
-        {
-            if (cards[i].currentCard == null)
-            {
-                yield break;
-            }
-        }
+        // for (int i = 0; i < cards.Count; i++)
+        // {
+        //     if (cards[i].currentCard == null)
+        //     {
+        //         yield break;
+        //     }
+        // }
         for (int i = 0; i < hand.Count; i++)
         {
             CardPlacement card = hand[i];
@@ -132,6 +132,7 @@ public class GameController : MonoBehaviour
         }
         if (ci.currentSelected != null)
         {
+            Debug.Log("Something is selected");
             ci.currentSelected.GetComponent<CardObject>().delete();
         }
         if (roundTillDeath == 1)
