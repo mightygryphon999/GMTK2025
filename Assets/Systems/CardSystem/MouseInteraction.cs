@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -5,7 +6,7 @@ public class CardInteraction : MonoBehaviour
 {
     // private Vector3 screenPoint;
     // private Vector3 worldPos;
-    private GameObject currentSelected;
+    public GameObject currentSelected;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,7 +44,6 @@ public class CardInteraction : MonoBehaviour
                 {
                     if (currentSelected.GetComponent<CardObject>().canMove && !currentSelected.GetComponent<CardObject>().inHand || currentSelected.GetComponent<CardObject>().canMove && hit.collider.gameObject.GetComponent<CardPlacement>().CompareTag("Hand"))
                     {
-                        currentSelected.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().currentCard = null;
                         hit.collider.gameObject.GetComponent<CardPlacement>().currentCard = currentSelected;
                         hit.collider.gameObject.GetComponent<CardPlacement>().allCards.Add(currentSelected);
                         currentSelected.GetComponent<CardObject>().placeDown(hit.collider.gameObject, false, 0, true, false);
@@ -71,6 +71,7 @@ public class CardInteraction : MonoBehaviour
                 {
                     if (hit.collider.gameObject.GetComponent<CardObject>().cardSlot != null)
                     {
+                        currentSelected.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().currentCard = null;
                         hit.collider.gameObject.GetComponent<CardObject>().cardSlot.GetComponent<CardPlacement>().allCards.Remove(hit.collider.gameObject);
                     }
                     hit.collider.gameObject.GetComponent<CardObject>().interact();

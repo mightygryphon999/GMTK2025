@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
     public int bonusRoundsAmount;
     public PerksController pc;
     public GameObject perks;
+    public CardInteraction ci;
 
     void Start()
     {
@@ -128,6 +129,10 @@ public class GameController : MonoBehaviour
                     handI.currentCard.GetComponent<CardObject>().delete();
                 }
             } // take out for stack mode
+        }
+        if (ci.currentSelected != null)
+        {
+            ci.currentSelected.GetComponent<CardObject>().delete();
         }
         if (roundTillDeath == 1)
         {
