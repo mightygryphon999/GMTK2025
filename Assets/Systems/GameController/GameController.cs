@@ -140,7 +140,8 @@ public class GameController : MonoBehaviour
         {
             if (points >= quota)
             {
-                gcc.spawnCoins(((int)points)/2);
+                gcc.spawnCoins(((int)points)/10);
+                gcc.checkGoldenCatBuy();
                 roundTillDeath = 5 + bonusRoundsAmount;
                 roundWonShowing = true;
                 round++;
