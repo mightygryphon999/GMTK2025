@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
     private bool roundWonShowing;
     public TextMeshProUGUI inGameQuotaText;
     public TextMeshProUGUI inGameRoundCounter;
-    private int roundTillDeath;
+    public int roundTillDeath;
     private float totalPoints;
     public TextMeshProUGUI currentPointCounter;
     public int bonusRoundsAmount;
@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
         round = 0;
         quota = 15;
         roundWonShowing = false;
-        startGame();
+        // startGame();
     }
 
     public void startGame()
@@ -84,6 +84,13 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < hand.Count; i++)
         {
             if (hand[i].currentCard == null)
+            {
+                yield break;
+            }
+        }
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if (cards[i].currentCard == null)
             {
                 yield break;
             }
