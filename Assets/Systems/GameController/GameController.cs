@@ -132,6 +132,7 @@ public class GameController : MonoBehaviour
         }
         if (ci.currentSelected != null)
         {
+            Debug.Log("Something is selected");
             ci.currentSelected.GetComponent<CardObject>().delete();
         }
         if (roundTillDeath == 1)
