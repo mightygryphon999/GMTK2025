@@ -295,7 +295,7 @@ MonoBehaviour:
   currentPerks: 
   perkImages:
   - {fileID: 21300000, guid: 00bf8fd076c444f1e94070cdd11111bb, type: 3}
-  - {fileID: 21300000, guid: 7304b2400f79546e1b79178eccc7fa8a, type: 3}
+  - {fileID: 21300000, guid: 00bf8fd076c444f1e94070cdd11111bb, type: 3}
   - {fileID: 21300000, guid: 53e4428094802471fa9dade3aa176672, type: 3}
   - {fileID: 21300000, guid: b5b6f86fe806c443195d4812358f10ba, type: 3}
   - {fileID: -1132951269, guid: e69cd521ee6904744aad5391ed2e14e8, type: 3}
@@ -309,6 +309,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1373b379028594a7ca79f0410ba0141f, type: 3}
   perkGroup: {fileID: 2078564000}
   perkImagePrefab: {fileID: 1292516463416445245, guid: 0fa2d8691077d4e1b84381042aecbbff, type: 3}
+  hsc: {fileID: 0}
 --- !u!4 &26272554
 Transform:
   m_ObjectHideFlags: 0

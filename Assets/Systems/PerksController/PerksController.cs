@@ -14,6 +14,8 @@ public class PerksController : MonoBehaviour
     public List<Sprite> perkImages;
     public GameObject perkGroup;
     public GameObject perkImagePrefab;
+    public HandSlotCreator hsc;
+    private bool handSlotAdd;
     void Start()
     {
         Setup();
@@ -33,6 +35,11 @@ public class PerksController : MonoBehaviour
     }
     public IEnumerator pointAdditions()
     {
+        if (handSlotAdd)
+        {
+            hsc.createNewHandSlot();
+        }
+        handSlotAdd = !handSlotAdd;
         yield return new WaitForEndOfFrame();
         foreach (int perk in currentPerks)
         {
@@ -42,7 +49,7 @@ public class PerksController : MonoBehaviour
             }
             else if (perk == 2)
             {
-                // fill in later
+                gc.points += 1;
             }
             else if (perk == 3 && gc.roundTillDeath == 1)
             {
