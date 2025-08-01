@@ -9,13 +9,13 @@ public class CoinBehaviour : MonoBehaviour
     {
         gcc = FindAnyObjectByType<GoldenCatController>();
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            pushCoin();
-        }
-    }
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.B))
+    //     {
+    //         pushCoin();
+    //     }
+    // }
     public void pushCoin()
     {
         gameObject.GetComponent<Rigidbody>().AddForce(pushDirection.normalized * pushMagnitude, ForceMode.Impulse);
