@@ -3783,6 +3783,7 @@ MonoBehaviour:
   anim: {fileID: 1353797815}
   p: {fileID: 0}
   text: {fileID: 1879738007}
+  winCutScene: {fileID: 319773112}
 --- !u!4 &1400468566
 Transform:
   m_ObjectHideFlags: 0

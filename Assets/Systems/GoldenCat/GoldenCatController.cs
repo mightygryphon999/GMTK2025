@@ -29,6 +29,8 @@ public class GoldenCatController : MonoBehaviour
     public void spawnCoins(int amount)
     {
         amountOfCoins += amount;
+        Debug.Log(amount);
+        Debug.Log(amountOfCoins);
         for (int i = 0; i < amount; i++)
         {
             GameObject coin = Instantiate(coinPrefab, spawnLocation, Quaternion.Euler(0, 0, 0));
