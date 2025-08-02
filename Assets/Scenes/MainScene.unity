@@ -2702,6 +2702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 372329399}
+  pauseButton: {fileID: 1516109518}
   paused: 0
 --- !u!4 &467369398
 Transform:
@@ -6205,7 +6206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1738, y: -921}
+  m_AnchoredPosition: {x: 1738, y: 941}
   m_SizeDelta: {x: 17.8143, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1516109520
@@ -7854,7 +7855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -304.74707, y: -312}
+  m_AnchoredPosition: {x: -304.74707, y: -605}
   m_SizeDelta: {x: 385.78833, y: 401.93652}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2078564002
