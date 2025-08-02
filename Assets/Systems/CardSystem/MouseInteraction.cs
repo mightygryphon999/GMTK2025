@@ -8,11 +8,11 @@ public class CardInteraction : MonoBehaviour
     // private Vector3 worldPos;
     public GameObject currentSelected;
     public GameController gc;
-    public int layerMask = ~LayerMask.GetMask("coinBarrier");
+    public int layerMask;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        layerMask = ~LayerMask.GetMask("coinBarrier");
     }
 
     // Update is called once per frame
