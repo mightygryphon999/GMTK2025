@@ -141,9 +141,10 @@ public class GameController : MonoBehaviour
         {
             if (points >= quota)
             {
+                Debug.Log(quotaRounds);
                 gcc.spawnCoins(((int)points)/10);
                 gcc.checkGoldenCatBuy();
-                if (quotaRounds == 1)
+                if (quotaRounds == 2)
                 {
                     quotaRounds = 0;
                 }
