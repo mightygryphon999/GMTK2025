@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Hand
   - coinDestroy
+  - coinBlock
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - coinBarrier
   - Water
   - UI
   - 
