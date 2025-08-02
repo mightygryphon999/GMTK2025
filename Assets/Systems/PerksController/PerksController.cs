@@ -32,15 +32,18 @@ public class PerksController : MonoBehaviour
             perkGameobject.GetComponent<UnityEngine.UI.Image>().sprite = perkImages[perk-1];
         }
     }
-    public IEnumerator pointAdditions()
+    public void handSlotAdder()
     {
-        Debug.Log(gc.roundTillDeath);
-        if (gc.quotaRounds == 2)
+        if (gc.handQuotaCounter == 2)
         {
             Debug.Log("added new slot");
             hsc.createNewHandSlot();
-            gc.quotaRounds = 0;
+            gc.handQuotaCounter = 0;
         }
+    }
+    public IEnumerator pointAdditions()
+    {
+        Debug.Log(gc.roundTillDeath);
         yield return new WaitForEndOfFrame();
         foreach (int perk in currentPerks)
         {

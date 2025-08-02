@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
     public BegenningVideoController loseCutScene;
     public int maxQuotas;
     private int totalQuotas;
+    public int handQuotaCounter;
 
     void Start()
     {
@@ -160,6 +161,8 @@ public class GameController : MonoBehaviour
         {
             if (points >= quota)
             {
+                handQuotaCounter++;
+                pc.handSlotAdder();
                 totalQuotas++;
                 quotaRounds++;
                 Debug.Log("quotaRounds" + quotaRounds);
