@@ -110,6 +110,10 @@ public class GameController : MonoBehaviour
                 i += neighboringCards - 1;
             }
         }
+        if (quotaRounds != 2)
+        {
+            quotaRounds++;
+        }
         yield return StartCoroutine(pc.pointAdditions());
         totalPoints += points;
         currentPointCounter.text = "Points: " + points.ToString();
@@ -147,10 +151,6 @@ public class GameController : MonoBehaviour
                 if (quotaRounds == 2)
                 {
                     quotaRounds = 0;
-                }
-                else
-                {
-                    quotaRounds++;
                 }
                 roundTillDeath = 5 + bonusRoundsAmount;
                 roundWonShowing = true;
