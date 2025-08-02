@@ -5,7 +5,7 @@ public class Persistent : MonoBehaviour
     public int coin;
     public int level;
     private static Persistent instance;
-    void Start()
+    void Awake()
     {
         if (instance != null && instance != this)
         {
