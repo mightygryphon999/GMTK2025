@@ -29,6 +29,7 @@ public class GoldenCatController : MonoBehaviour
     public void spawnCoins(int amount)
     {
         amountOfCoins += amount;
+        amountOfCoins = Mathf.Abs(amountOfCoins);
         Debug.Log(amount);
         Debug.Log(amountOfCoins);
         for (int i = 0; i < amount; i++)
