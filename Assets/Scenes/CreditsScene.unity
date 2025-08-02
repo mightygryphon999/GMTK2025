@@ -1485,13 +1485,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f35537d2d17c45eeaa44511bb1a6e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauses: []
-  pauseLength: []
+  pauses:
+  - {fileID: 1242166137}
+  - {fileID: 1401440509}
+  - {fileID: 409278436}
+  pauseLength:
+  - 1
+  - 2
+  - 4
   shown: 
   speed: 0.25
   index: 0
   paused: 0
-  threshold: 0
+  rt: {fileID: 538578580}
+  threshold: 689
   audioS: {fileID: 1871434805}
   firstAudioClip: {fileID: 0}
 --- !u!1 &1845939551

@@ -12,18 +12,18 @@ public class CreditsScene : MonoBehaviour
     public float speed;
     public int index = 0;
     public bool paused;
-    private RectTransform rt;
+    public RectTransform rt;
     public float threshold;
     private int currentPause;
     public AudioSource audioS;
     public AudioClip firstAudioClip;
     void Start()
     {
-        audioS.PlayOneShot(firstAudioClip);
-        float length = firstAudioClip.length;
-        Debug.Log(length);
-        Invoke("playSecondSound", length);
-        rt = gameObject.GetComponent<RectTransform>();
+        if (firstAudioClip != null)
+        {
+            audioS.PlayOneShot(firstAudioClip);
+        }
+        //Invoke("playSecondSound", length);
         shown = new List<bool>();
         foreach (RectTransform transform in pauses)
         {
