@@ -30,7 +30,7 @@ public class CreditsScene : MonoBehaviour
             shown.Add(false);
         }
     }
-    
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -55,7 +55,7 @@ public class CreditsScene : MonoBehaviour
         }
         if (!paused && currentPause+1 == pauses.Count)
         {
-            SceneManager.LoadScene("MenuScreen");
+            SceneManager.LoadScene("MenuScene");
         }
     }
 
