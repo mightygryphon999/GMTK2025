@@ -37,6 +37,7 @@ public class PerksController : MonoBehaviour
         if (gc.quotaRounds == 1)
         {
             hsc.createNewHandSlot();
+            gc.quotaRounds = 0;
         }
         yield return new WaitForEndOfFrame();
         foreach (int perk in currentPerks)
