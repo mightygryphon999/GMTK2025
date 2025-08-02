@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 public class BegenningVideoController : MonoBehaviour
@@ -7,6 +8,8 @@ public class BegenningVideoController : MonoBehaviour
     public GameController gc;
     public GameObject text;
     public bool playing;
+    public bool loadSceneAfter;
+    public string scene;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +30,10 @@ public class BegenningVideoController : MonoBehaviour
     }
     void videoFinished(VideoPlayer vp)
     {
+        if (loadSceneAfter)
+        {
+            SceneManager.LoadScene(scene);
+        }
         text.SetActive(false);
         vp.gameObject.SetActive(false);
         gc.startGame();
@@ -37,6 +44,10 @@ public class BegenningVideoController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && playing)
         {
+            if (loadSceneAfter)
+            {
+                SceneManager.LoadScene(scene);
+            }
             playing = false;
             text.SetActive(false);
             vp.Stop();
