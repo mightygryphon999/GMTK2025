@@ -110,9 +110,12 @@ public class GameController : MonoBehaviour
                 i += neighboringCards - 1;
             }
         }
-        if (quotaRounds != 2)
+        if (roundTillDeath == 1)
         {
-            quotaRounds++;
+            if (quotaRounds != 2)
+            {
+                quotaRounds++;
+            }
         }
         yield return StartCoroutine(pc.pointAdditions());
         totalPoints += points;

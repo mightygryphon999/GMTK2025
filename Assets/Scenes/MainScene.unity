@@ -598,6 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSelected: {fileID: 0}
+  gc: {fileID: 1909434067}
 --- !u!4 &78490768
 Transform:
   m_ObjectHideFlags: 0
@@ -4601,6 +4602,7 @@ MonoBehaviour:
   cardSpawnRate: 0.25
   preFlipTime: 2
   stackMode: 0
+  playing: 0
   quota: 0
   round: 0
   quotaText: {fileID: 1433485456}
@@ -4663,6 +4665,8 @@ MonoBehaviour:
   gc: {fileID: 1909434067}
   text: {fileID: 454791558}
   playing: 0
+  loadSceneAfter: 0
+  scene: 
 --- !u!4 &2007647840
 Transform:
   m_ObjectHideFlags: 0
