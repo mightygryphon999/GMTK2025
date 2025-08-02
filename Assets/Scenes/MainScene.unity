@@ -333,6 +333,103 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 0e2fba6fa57c445df803ae403422c579, type: 3}
   m_PrefabInstance: {fileID: 4170522}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6645403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6645404}
+  - component: {fileID: 6645407}
+  - component: {fileID: 6645406}
+  - component: {fileID: 6645405}
+  m_Layer: 3
+  m_Name: CoinCollisionBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6645404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.0756974, y: 0.091367915, z: 3.894085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6645405
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645403}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8627291, y: 24.162336, z: 13.729629}
+  m_Center: {x: 1.1913638, y: 11.581168, z: -3.662312}
+--- !u!65 &6645406
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645403}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.2139425, y: 22.609898, z: 0.7353115}
+  m_Center: {x: -2.2916021, y: 10.804949, z: -10.233872}
+--- !u!65 &6645407
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645403}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.063057, y: 24.140676, z: 13.767479}
+  m_Center: {x: -5.8183413, y: 11.570338, z: -3.745717}
 --- !u!1001 &24208941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1885,13 +1982,13 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e7f819a95e514494bb4b16ec3809f1f4, type: 3}
   m_Resource: {fileID: 8300000, guid: e7f819a95e514494bb4b16ec3809f1f4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.133
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -3003,7 +3100,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!64 &720579972
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3023,7 +3120,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 0e2fba6fa57c445df803ae403422c579, type: 3}
 --- !u!1001 &733576783
@@ -6788,6 +6885,7 @@ MonoBehaviour:
   winCutScene: {fileID: 319773112}
   loseCutScene: {fileID: 2014325225}
   maxQuotas: 0
+  handQuotaCounter: 0
 --- !u!4 &1909434068
 Transform:
   m_ObjectHideFlags: 0
@@ -7275,3 +7373,4 @@ SceneRoots:
   - {fileID: 319773113}
   - {fileID: 1404174994}
   - {fileID: 2120425245}
+  - {fileID: 6645404}

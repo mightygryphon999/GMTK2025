@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CoinBehaviour : MonoBehaviour
@@ -5,6 +7,7 @@ public class CoinBehaviour : MonoBehaviour
     public Vector3 pushDirection;
     public float pushMagnitude;
     public GoldenCatController gcc;
+    public AudioSource coinGain;
     void Start()
     {
         gcc = FindAnyObjectByType<GoldenCatController>();
@@ -24,8 +27,14 @@ public class CoinBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("coinDestroy"))
         {
-            gcc.activeCoins.Remove(gameObject);
-            Destroy(gameObject);
+            coinGain.Play();
+            StartCoroutine(waitForSound());
         }
+    }
+    IEnumerator waitForSound()
+    {
+        yield return new WaitForSeconds(coinGain.clip.length);
+        gcc.activeCoins.Remove(gameObject);
+        Destroy(gameObject);
     }
 }
