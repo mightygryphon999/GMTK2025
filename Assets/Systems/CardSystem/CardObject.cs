@@ -123,7 +123,7 @@ public class CardObject : MonoBehaviour
         canClick = false;
         moveWoosh.Play();
         gameObject.transform.SetParent(target.transform);
-        transform.DOMove(new Vector3(target.transform.position.x, target.transform.position.y + floatAmount, target.transform.position.z), transferSpeed).SetEase(Ease.OutSine).OnComplete(() => { hovering = false; canClick = true; if (hide) { StartCoroutine(flipAfterTime(watiTime)); } });
+        transform.DOMove(new Vector3(target.transform.position.x, target.transform.position.y + floatAmount, target.transform.position.z), transferSpeed).SetEase(Ease.OutSine).OnComplete(() => { hovering = false; canClick = true; cardFlip.Play(); if (hide) { StartCoroutine(flipAfterTime(watiTime)); } });
         if (show && target.CompareTag("Hand") || overideShow)
         {
             inHand = true;
@@ -132,14 +132,12 @@ public class CardObject : MonoBehaviour
                 inHand = false;
             }
             canvas.SetActive(true);
-            cardFlip.Play();
             transform.DORotate(new Vector3(-90, target.transform.eulerAngles.y, 0), transferSpeed).SetEase(Ease.OutSine);
         }
         else
         {
             inHand = false;
             canvas.SetActive(false);
-            cardFlip.Play();
             transform.DORotate(new Vector3(90, target.transform.eulerAngles.y, 0), transferSpeed).SetEase(Ease.OutSine);
         }
     }

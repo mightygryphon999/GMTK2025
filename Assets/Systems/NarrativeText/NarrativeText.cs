@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -46,7 +47,8 @@ public class NarrativeText : MonoBehaviour
             text[i].SetActive(true);
             text[i].GetComponent<CanvasGroup>().DOFade(1, 0.1f);
             yield return new WaitForSeconds(delay[i]);
-            text[i].GetComponent<CanvasGroup>().DOFade(0, 0.1f).OnComplete(() => {text[i].SetActive(false);});
+            GameObject texting = text[i];
+            text[i].GetComponent<CanvasGroup>().DOFade(0, 0.1f).OnComplete(() => {texting.SetActive(false);});
         }
         canvas.SetActive(false);
         playing = false;
