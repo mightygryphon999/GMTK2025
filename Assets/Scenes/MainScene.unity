@@ -1885,7 +1885,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e7f819a95e514494bb4b16ec3809f1f4, type: 3}
   m_Resource: {fileID: 8300000, guid: e7f819a95e514494bb4b16ec3809f1f4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.133
+  m_Volume: 0.081
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6788,6 +6788,7 @@ MonoBehaviour:
   winCutScene: {fileID: 319773112}
   loseCutScene: {fileID: 2014325225}
   maxQuotas: 0
+  handQuotaCounter: 0
 --- !u!4 &1909434068
 Transform:
   m_ObjectHideFlags: 0
