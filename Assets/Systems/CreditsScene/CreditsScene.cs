@@ -40,7 +40,7 @@ public class CreditsScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int speedboost = Input.GetKeyDown(KeyCode.Escape) ? 1 : 0;
+        int speedboost = Input.GetKey(KeyCode.Escape) ? 1 : 0;
         if (!paused) { rt.anchoredPosition += new Vector2(0, (speed + 300 * speedboost) * Time.deltaTime); }
         ;
         for (int i = 0; i < pauses.Count; i++)

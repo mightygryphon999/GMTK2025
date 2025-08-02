@@ -1491,10 +1491,10 @@ MonoBehaviour:
   - {fileID: 409278436}
   pauseLength:
   - 1
-  - 2
+  - 6
   - 4
   shown: 
-  speed: 0.25
+  speed: 250
   index: 0
   paused: 0
   rt: {fileID: 538578580}
