@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     public float cardSpawnRate;
     public float preFlipTime;
     public bool stackMode;
-    private bool playing;
+    public bool playing;
     public float quota;
     public float round;
     public TextMeshProUGUI quotaText;

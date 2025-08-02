@@ -7,6 +7,7 @@ public class CardInteraction : MonoBehaviour
     // private Vector3 screenPoint;
     // private Vector3 worldPos;
     public GameObject currentSelected;
+    public GameController gc;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,7 +39,7 @@ public class CardInteraction : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            if (hit.collider.gameObject.GetComponent<CardPlacement>())
+            if (hit.collider.gameObject.GetComponent<CardPlacement>() && gc.playing)
             {
                 if (hit.collider.gameObject.GetComponent<CardPlacement>().currentCard == null)
                 {
@@ -65,7 +66,7 @@ public class CardInteraction : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            if (hit.collider.gameObject.GetComponent<CardObject>())
+            if (hit.collider.gameObject.GetComponent<CardObject>() && gc.playing)
             {
                 Debug.Log("Card");
                 if (!hit.collider.gameObject.GetComponent<CardObject>().selected && hit.collider.gameObject.GetComponent<CardObject>().canClick)
