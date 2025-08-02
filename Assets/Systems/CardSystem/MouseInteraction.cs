@@ -23,14 +23,35 @@ public class CardInteraction : MonoBehaviour
             // getMousePos();
             // getMouseWorldPos();
             detectInteraction();
+            detectRuleBook();
         }
         else if (Input.GetMouseButtonDown(0) && currentSelected != null)
         {
             // getMousePos();
             // getMouseWorldPos();
             detectPlacement();
+            detectRuleBook();
         }
-        
+    }
+    public void detectRuleBook()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1000, layerMask))
+        {
+            if (hit.collider.gameObject.GetComponent<RuleBook>())
+            {
+                if (hit.collider.gameObject.GetComponent<RuleBook>().shouldMove)
+                {
+                    hit.collider.gameObject.GetComponent<RuleBook>().shouldMove = false;
+                }
+                else
+                {
+                    hit.collider.gameObject.GetComponent<RuleBook>().shouldMove = true;
+                }
+            }
+        }
     }
 
     public void detectPlacement()
