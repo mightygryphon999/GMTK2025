@@ -34,6 +34,7 @@ public class PerksController : MonoBehaviour
     }
     public IEnumerator pointAdditions()
     {
+        Debug.Log(gc.roundTillDeath);
         if (gc.quotaRounds == 2)
         {
             Debug.Log("added new slot");
