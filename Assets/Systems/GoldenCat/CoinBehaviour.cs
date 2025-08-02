@@ -33,7 +33,7 @@ public class CoinBehaviour : MonoBehaviour
     }
     IEnumerator waitForSound()
     {
-        yield return new WaitForSeconds(coinGain.clip.length);
+        yield return new WaitForSeconds(5);
         gcc.activeCoins.Remove(gameObject);
         Destroy(gameObject);
     }
