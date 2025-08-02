@@ -3658,7 +3658,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 1046026819473841366, guid: 57d244f102eeb46929ad237a74bda86e, type: 3}
   amountOfCoins: 0
   spawnLocation: {x: -6.7, y: 15.06, z: 4.988e-12}
-  goldenCoinCost: 0f0000000f00000096000000c80000002c010000
+  goldenCoinCost: 050000000f00000096000000c80000002c010000
   stage: 0
   anim: {fileID: 1353797815}
   p: {fileID: 0}
