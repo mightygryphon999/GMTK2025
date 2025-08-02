@@ -13,6 +13,11 @@ public class BegenningVideoController : MonoBehaviour
         vp.prepareCompleted += vp => playVideo();
         vp.Prepare();
     }
+    public void playVideoPrepare()
+    {
+        vp.prepareCompleted += vp => playVideo();
+        vp.Prepare();
+    }
     public void playVideo()
     {
         playing = true;

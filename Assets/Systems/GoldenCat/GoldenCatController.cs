@@ -57,6 +57,8 @@ public class GoldenCatController : MonoBehaviour
             }
             amountOfCoins -= goldenCoinCost[stage];
             anim.SetInteger("state", stage);
+            p.coin = amountOfCoins;
+            p.level = stage;
         }
         
     }

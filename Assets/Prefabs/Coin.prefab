@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushDirection: {x: 0, y: 0, z: 90}
   pushMagnitude: 25
+  gcc: {fileID: 0}
 --- !u!54 &909469316800612599
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -105,7 +106,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046026819473841366}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
