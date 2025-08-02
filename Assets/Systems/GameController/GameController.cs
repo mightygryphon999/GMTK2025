@@ -76,6 +76,7 @@ public class GameController : MonoBehaviour
         foreach (CardPlacement card in cards)
         {
             GameObject newCard = Instantiate(cardPrefab, startingPos, startingRot);
+            newCard.GetComponent<CardObject>().canClick = false;
             card.currentCard = newCard;
             card.allCards.Add(newCard);
             newCard.GetComponent<CardObject>().placeDown(card.gameObject, true, preFlipTime, true, true);
@@ -161,7 +162,8 @@ public class GameController : MonoBehaviour
             {
                 totalQuotas++;
                 quotaRounds++;
-                Debug.Log(quotaRounds);
+                Debug.Log("quotaRounds" + quotaRounds);
+                Debug.Log("points: " + points);
                 gcc.spawnCoins(((int)points)/10);
                 gcc.checkGoldenCatBuy();
                 if (quotaRounds == 2)

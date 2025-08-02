@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushDirection: {x: 0, y: 0, z: 90}
-  pushMagnitude: 25
+  pushMagnitude: 50
   gcc: {fileID: 0}
 --- !u!54 &909469316800612599
 Rigidbody:
