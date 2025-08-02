@@ -1234,12 +1234,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d7974545c3c034436bdc500f57dd6a88, type: 3}
-  m_Resource: {fileID: 8300000, guid: d7974545c3c034436bdc500f57dd6a88, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e7f819a95e514494bb4b16ec3809f1f4, type: 3}
+  m_Resource: {fileID: 8300000, guid: e7f819a95e514494bb4b16ec3809f1f4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.133
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4614,6 +4614,7 @@ MonoBehaviour:
   perks: {fileID: 1903746339}
   ci: {fileID: 78490767}
   gcc: {fileID: 1400468565}
+  quotaRounds: 0
 --- !u!4 &1909434068
 Transform:
   m_ObjectHideFlags: 0
