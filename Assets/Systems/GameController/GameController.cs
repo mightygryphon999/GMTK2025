@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
 
     public void startGame()
     {
-        if (!playing && totalQuotas < maxQuotas)
+        if (!playing /*&& totalQuotas < maxQuotas*/)
         {
             pc.Setup();
             inGameRoundCounter.text = "Round: " + roundTillDeath.ToString();
@@ -62,13 +62,13 @@ public class GameController : MonoBehaviour
             playing = true;
             StartCoroutine(setupCards());
         }
-        else
-        {
-            if (totalQuotas >= maxQuotas)
-            {
-                winCutScene.playVideoPrepare();
-            }
-        }
+        // else
+        // {
+        //     if (totalQuotas >= maxQuotas)
+        //     {
+        //         winCutScene.playVideoPrepare();
+        //     }
+        // }
     }
 
     IEnumerator setupCards()

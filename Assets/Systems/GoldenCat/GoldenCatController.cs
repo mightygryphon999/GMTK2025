@@ -14,6 +14,7 @@ public class GoldenCatController : MonoBehaviour
     public Animator anim;
     public Persistent p;
     public TextMeshProUGUI text;
+    public BegenningVideoController winCutScene;
     void Start()
     {
         p = FindAnyObjectByType<Persistent>();
@@ -52,6 +53,7 @@ public class GoldenCatController : MonoBehaviour
             pushCoins();
             if (stage == goldenCoinCost.Count)
             {
+                winCutScene.playVideoPrepare();
                 // do gameover thingy here
                 return;
             }
