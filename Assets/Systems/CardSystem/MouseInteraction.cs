@@ -8,6 +8,7 @@ public class CardInteraction : MonoBehaviour
     // private Vector3 worldPos;
     public GameObject currentSelected;
     public GameController gc;
+    public int layerMask = ~LayerMask.GetMask("coinBarrier");
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,7 +38,7 @@ public class CardInteraction : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 1000))
+        if (Physics.Raycast(ray, out hit, 1000, layerMask))
         {
             if (hit.collider.gameObject.GetComponent<CardPlacement>() && gc.playing)
             {
@@ -64,7 +65,7 @@ public class CardInteraction : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 1000))
+        if (Physics.Raycast(ray, out hit, 1000, layerMask))
         {
             if (hit.collider.gameObject.GetComponent<CardObject>() && gc.playing)
             {
