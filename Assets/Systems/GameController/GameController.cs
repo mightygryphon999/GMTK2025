@@ -33,6 +33,10 @@ public class GameController : MonoBehaviour
     public CardInteraction ci;
     public GoldenCatController gcc;
     public int quotaRounds;
+    public BegenningVideoController winCutScene;
+    public BegenningVideoController loseCutScene;
+    public int maxQuotas;
+    private int totalQuotas;
 
     void Start()
     {
@@ -46,7 +50,7 @@ public class GameController : MonoBehaviour
 
     public void startGame()
     {
-        if (!playing)
+        if (!playing && totalQuotas < maxQuotas)
         {
             pc.Setup();
             inGameRoundCounter.text = "Round: " + roundTillDeath.ToString();
@@ -57,6 +61,13 @@ public class GameController : MonoBehaviour
             }
             playing = true;
             StartCoroutine(setupCards());
+        }
+        else
+        {
+            if (totalQuotas >= maxQuotas)
+            {
+                winCutScene.playVideoPrepare();
+            }
         }
     }
 
@@ -148,6 +159,8 @@ public class GameController : MonoBehaviour
         {
             if (points >= quota)
             {
+                totalQuotas++;
+                quotaRounds++;
                 Debug.Log(quotaRounds);
                 gcc.spawnCoins(((int)points)/10);
                 gcc.checkGoldenCatBuy();
@@ -169,7 +182,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene("MenuScene");
+                loseCutScene.playVideoPrepare();
             }
         }
         else

@@ -10,11 +10,15 @@ public class BegenningVideoController : MonoBehaviour
     public bool playing;
     public bool loadSceneAfter;
     public string scene;
+    public bool dontPlayOnStart;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        vp.prepareCompleted += vp => playVideo();
-        vp.Prepare();
+        if (!dontPlayOnStart)
+        {
+            vp.prepareCompleted += vp => playVideo();
+            vp.Prepare();
+        }
     }
     public void playVideoPrepare()
     {
