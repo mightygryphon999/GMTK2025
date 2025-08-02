@@ -3,6 +3,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject pauseButton;
     public bool paused;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,11 +15,13 @@ public class PauseMenu : MonoBehaviour
         paused = !paused;
         if (paused)
         {
+            pauseButton.SetActive(false);
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
         }
         else
         {
+            pauseButton.SetActive(true);
             Time.timeScale = 1;
             pauseMenu.SetActive(false);
         }
@@ -32,11 +35,13 @@ public class PauseMenu : MonoBehaviour
             paused = !paused;
             if (paused)
             {
+                pauseButton.SetActive(false);
                 Time.timeScale = 0;
                 pauseMenu.SetActive(true);
             }
             else
             {
+                pauseButton.SetActive(true);
                 Time.timeScale = 1;
                 pauseMenu.SetActive(false);
             }
