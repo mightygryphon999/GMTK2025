@@ -34,8 +34,10 @@ public class PerksController : MonoBehaviour
     }
     public IEnumerator pointAdditions()
     {
-        if (gc.quotaRounds == 1)
+        Debug.Log(gc.roundTillDeath);
+        if (gc.quotaRounds == 2)
         {
+            Debug.Log("added new slot");
             hsc.createNewHandSlot();
             gc.quotaRounds = 0;
         }

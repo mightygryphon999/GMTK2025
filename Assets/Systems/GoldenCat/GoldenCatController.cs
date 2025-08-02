@@ -14,6 +14,7 @@ public class GoldenCatController : MonoBehaviour
     public Animator anim;
     public Persistent p;
     public TextMeshProUGUI text;
+    public BegenningVideoController winCutScene;
     void Start()
     {
         p = FindAnyObjectByType<Persistent>();
@@ -28,6 +29,9 @@ public class GoldenCatController : MonoBehaviour
     public void spawnCoins(int amount)
     {
         amountOfCoins += amount;
+        amountOfCoins = Mathf.Abs(amountOfCoins);
+        Debug.Log(amount);
+        Debug.Log(amountOfCoins);
         for (int i = 0; i < amount; i++)
         {
             GameObject coin = Instantiate(coinPrefab, spawnLocation, Quaternion.Euler(0, 0, 0));
@@ -48,14 +52,15 @@ public class GoldenCatController : MonoBehaviour
     {
         if (amountOfCoins >= goldenCoinCost[stage])
         {
-            stage++;
             pushCoins();
             if (stage == goldenCoinCost.Count)
             {
+                winCutScene.playVideoPrepare();
                 // do gameover thingy here
                 return;
             }
             amountOfCoins -= goldenCoinCost[stage];
+            stage++;
             anim.SetInteger("state", stage);
             p.coin = amountOfCoins;
             p.level = stage;

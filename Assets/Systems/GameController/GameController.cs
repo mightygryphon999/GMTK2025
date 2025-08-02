@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     public float cardSpawnRate;
     public float preFlipTime;
     public bool stackMode;
-    private bool playing;
+    public bool playing;
     public float quota;
     public float round;
     public TextMeshProUGUI quotaText;
@@ -33,6 +33,10 @@ public class GameController : MonoBehaviour
     public CardInteraction ci;
     public GoldenCatController gcc;
     public int quotaRounds;
+    public BegenningVideoController winCutScene;
+    public BegenningVideoController loseCutScene;
+    public int maxQuotas;
+    private int totalQuotas;
 
     void Start()
     {
@@ -46,7 +50,7 @@ public class GameController : MonoBehaviour
 
     public void startGame()
     {
-        if (!playing)
+        if (!playing /*&& totalQuotas < maxQuotas*/)
         {
             pc.Setup();
             inGameRoundCounter.text = "Round: " + roundTillDeath.ToString();
@@ -58,6 +62,13 @@ public class GameController : MonoBehaviour
             playing = true;
             StartCoroutine(setupCards());
         }
+        // else
+        // {
+        //     if (totalQuotas >= maxQuotas)
+        //     {
+        //         winCutScene.playVideoPrepare();
+        //     }
+        // }
     }
 
     IEnumerator setupCards()
@@ -110,6 +121,13 @@ public class GameController : MonoBehaviour
                 i += neighboringCards - 1;
             }
         }
+        if (roundTillDeath == 1)
+        {
+            if (quotaRounds != 2)
+            {
+                quotaRounds++;
+            }
+        }
         yield return StartCoroutine(pc.pointAdditions());
         totalPoints += points;
         currentPointCounter.text = "Points: " + points.ToString();
@@ -141,15 +159,14 @@ public class GameController : MonoBehaviour
         {
             if (points >= quota)
             {
+                totalQuotas++;
+                quotaRounds++;
+                Debug.Log(quotaRounds);
                 gcc.spawnCoins(((int)points)/10);
                 gcc.checkGoldenCatBuy();
-                if (quotaRounds == 1)
+                if (quotaRounds == 2)
                 {
                     quotaRounds = 0;
-                }
-                else
-                {
-                    quotaRounds++;
                 }
                 roundTillDeath = 5 + bonusRoundsAmount;
                 roundWonShowing = true;
@@ -165,7 +182,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene("MenuScene");
+                loseCutScene.playVideoPrepare();
             }
         }
         else
