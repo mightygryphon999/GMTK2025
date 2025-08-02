@@ -1,9 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using DG.Tweening.Plugins.Options;
 using System.Collections;
 
 public class CardObject : MonoBehaviour
@@ -33,6 +30,9 @@ public class CardObject : MonoBehaviour
     public bool inHand;
     public GameObject perkImage;
     public GameObject perkSlot;
+    public AudioSource moveWoosh;
+    public AudioSource cardFlip;
+    public AudioSource deathWoosh;
     // Add the perk visual initialization
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -60,6 +60,7 @@ public class CardObject : MonoBehaviour
 
     public void delete()
     {
+        deathWoosh.Play();
         DOTween.Kill(gameObject.transform);
         if (cardSlot != null)
         {
@@ -70,6 +71,7 @@ public class CardObject : MonoBehaviour
 
     public void show()
     {
+        cardFlip.Play();
         hidden = false;
         canvas.SetActive(true);
         canClick = true;
@@ -79,6 +81,7 @@ public class CardObject : MonoBehaviour
 
     public void hide()
     {
+        cardFlip.Play();
         hidden = true;
         canvas.SetActive(false);
         gameObject.transform.DORotate(new Vector3(90, gameObject.transform.eulerAngles.y, gameObject.transform.eulerAngles.z), flipTime).SetEase(Ease.InOutSine);
@@ -118,6 +121,7 @@ public class CardObject : MonoBehaviour
         DOTween.Kill(gameObject.transform);
         selected = false;
         canClick = false;
+        moveWoosh.Play();
         gameObject.transform.SetParent(target.transform);
         transform.DOMove(new Vector3(target.transform.position.x, target.transform.position.y + floatAmount, target.transform.position.z), transferSpeed).SetEase(Ease.OutSine).OnComplete(() => { hovering = false; canClick = true; if (hide) { StartCoroutine(flipAfterTime(watiTime)); } });
         if (show && target.CompareTag("Hand") || overideShow)
@@ -128,12 +132,14 @@ public class CardObject : MonoBehaviour
                 inHand = false;
             }
             canvas.SetActive(true);
+            cardFlip.Play();
             transform.DORotate(new Vector3(-90, target.transform.eulerAngles.y, 0), transferSpeed).SetEase(Ease.OutSine);
         }
         else
         {
             inHand = false;
             canvas.SetActive(false);
+            cardFlip.Play();
             transform.DORotate(new Vector3(90, target.transform.eulerAngles.y, 0), transferSpeed).SetEase(Ease.OutSine);
         }
     }
@@ -144,11 +150,5 @@ public class CardObject : MonoBehaviour
         yield return new WaitForSeconds(timer);
         canClick = true;
         gameObject.GetComponent<CardObject>().hide();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

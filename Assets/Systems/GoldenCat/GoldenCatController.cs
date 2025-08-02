@@ -21,6 +21,11 @@ public class GoldenCatController : MonoBehaviour
         amountOfCoins = p.coin;
         stage = p.level;
     }
+    public void saveLeve()
+    {
+        p.coin = amountOfCoins;
+        p.level = stage;
+    }
     void Update()
     {
         text.text = amountOfCoins + "/" + goldenCoinCost[stage];

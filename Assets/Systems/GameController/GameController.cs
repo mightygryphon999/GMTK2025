@@ -187,6 +187,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
+                gcc.saveLeve();
                 loseCutScene.playVideoPrepare();
             }
         }
