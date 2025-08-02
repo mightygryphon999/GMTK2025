@@ -52,7 +52,6 @@ public class GoldenCatController : MonoBehaviour
     {
         if (amountOfCoins >= goldenCoinCost[stage])
         {
-            stage++;
             pushCoins();
             if (stage == goldenCoinCost.Count)
             {
@@ -61,6 +60,7 @@ public class GoldenCatController : MonoBehaviour
                 return;
             }
             amountOfCoins -= goldenCoinCost[stage];
+            stage++;
             anim.SetInteger("state", stage);
             p.coin = amountOfCoins;
             p.level = stage;
